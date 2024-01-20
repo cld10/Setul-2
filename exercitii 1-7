@@ -1,0 +1,177 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace setul_2
+{
+    internal class Program
+    {
+        static int CautaNumar(int lungime, int numarCautat)
+        {
+            for (int i = 0; i < lungime; i++)
+            {
+                ///Console.Write($"Introduceti elementul {i} din secventa.");
+                int numar = int.Parse(Console.ReadLine());
+                if (numar == numarCautat)
+
+                    return i;
+            }
+            return -1;
+        }
+        private static bool Verifica(int[] sequence)
+        {
+            for (int i = 1; i < sequence.Length; i++)
+            {
+                if (sequence[i] < sequence[i - 1])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+
+        static void Main(string[] args)
+        {
+             //exercitiul 1
+             Console.WriteLine("Excercitiul 1.");
+             Console.WriteLine("Introduceti secventa de numere:");
+             int numbers = int.Parse(Console.ReadLine());
+             int cnt = 0;
+             for (int i = 0; i < numbers; i++)
+             {
+                 int n = int.Parse(Console.ReadLine());
+                 if (n % 2 == 0) cnt++;
+             }
+             Console.WriteLine($"Sunt {cnt} numere pare");
+             Console.ReadLine();
+
+             //exercitiul 2
+             Console.WriteLine("Exercitiul 2.");
+             Console.WriteLine("Introduceti secventa de numere:");
+             int num = int.Parse(Console.ReadLine());
+             int minus = 0, plus = 0, zero = 0;
+             for (int i = 0; i < num; i++)
+             {
+                 int m = int.Parse(Console.ReadLine());
+                 if (m > 0) plus++;
+                 else if (m < 0) minus++;
+                 else zero++;
+             }
+             Console.WriteLine($"Sunt {plus} numere pozitive, {minus} numere negative si {zero} de zero.");
+             Console.ReadLine();
+
+             //exercitiul 3
+             Console.WriteLine("Exercitiul 3.");
+             Console.WriteLine("Introduceti numarul:");
+             int numere = int.Parse(Console.ReadLine());
+             int suma = 0, prod = 1;
+             for (int i = 1; i <= numere; i++)
+             {
+                 suma = suma + i;
+                 prod = prod * i;
+             }
+             Console.WriteLine($"Suma numerelor este {suma} iar produsul lor este {prod}");
+             Console.ReadLine();
+
+             //exercitiul 4
+             Console.WriteLine("Exercitiul 4.");
+             Console.Write("Introduceti lungimea secventei: ");
+             int p = int.Parse(Console.ReadLine());
+             Console.Write("Introduceti numarul cautat: ");
+             int a = int.Parse(Console.ReadLine());
+             Console.WriteLine("Introduceti secventa de numere ");
+             int poz = CautaNumar(p, a);
+             if (poz != -1)
+             {
+                 Console.WriteLine($"Numarul {a} se afla pe pozitia {poz}.");
+                 Console.ReadLine();
+
+             }
+             else
+             {
+                 Console.Write("Numarul cautat nu se afla in secventa.");
+                 Console.WriteLine("-1");
+             }
+
+
+             //exercitiul 5
+              Console.WriteLine("Exercitiul 5");
+              Console.WriteLine("Introduceti lungimea secventei");
+              int l=int.Parse(Console.ReadLine());
+              Console.WriteLine("Introduceti secventa:");
+             int k = 0;
+             for (int i = 0; i < l; i++)
+             {
+                 int numar = int.Parse(Console.ReadLine());
+                 if (numar == i) { k++; }
+             }
+             Console.WriteLine($"Sunt {k} numere care sunt egale cu pozitia pe care apar in secventa.");
+             
+            
+            // exercitiul 6
+            Console.WriteLine("Exercitiul 6");
+            Console.Write("Introduceti lungimea secventei: ");
+            int q = int.Parse(Console.ReadLine());
+            int[] secventa = new int[q];
+            Console.WriteLine($"Introduceti elementele din secventa: ");
+            for (int i = 0; i < q; i++)
+            {
+                secventa[i] = int.Parse(Console.ReadLine());
+            }
+
+            bool SuntCrescatoare = Verifica(secventa);
+            if (SuntCrescatoare)
+
+                Console.WriteLine("Numerele din secventa sunt in ordine crescatoare.");
+
+            else
+
+                Console.WriteLine("Numerele din secventa nu sunt in ordine crescatoare.");
+          Console.ReadLine();
+
+
+            //exercitiul 7
+            Console.WriteLine("Exercitiul 7");
+            Console.Write("Introduceti lungimea secventei: ");
+            int s = int.Parse(Console.ReadLine());
+
+            int[] secv = new int[s];
+            int maxim = 0;
+            int minim = 0;
+
+            Console.Write($"Introduceti elementele  din secventa: ");
+            for (int i = 0; i < s; i++)
+            {
+                secventa[i] = int.Parse(Console.ReadLine());
+            }
+             minim = secv[0];
+             maxim = secv[0];
+
+            for (int i = 1; i < s; i++)
+            {
+                if (secventa[i] < minim)
+                {
+                    minim = secventa[i];
+                }
+
+                if (secventa[i] > maxim)
+                {
+                    maxim = secventa[i];
+                }
+            }
+
+            Console.WriteLine($"Cea mai mica valoare din secventa este: {minim}");
+            Console.WriteLine($"Cea mai mare valoare din secventa este: {maxim}");
+
+            
+
+        }
+
+    }
+}
+
+
